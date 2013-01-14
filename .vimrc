@@ -217,7 +217,7 @@ filetype plugin on
 if has("win32")
     let g:pydiction_location = 'C:/vim/vimfiles/ftplugin/pydiction/complete-dict'
 else
-    let g:pydiction_location = '/home/rkulla/.vim/ftplugin/pydiction-1.2/complete-dict'
+    let g:pydiction_location = '/home/rkulla/.vim/after/ftplugin/complete-dict'
 endif
 
 
@@ -225,6 +225,9 @@ endif
 " Make it so you can recompile CoffeeScript Koans easily
 nmap <Leader>c :!cake build<CR>
 
+""" Node.js
+" Make it so Jade templates use only 2 spaces for indentations
+autocmd BufRead,BufNewFile *.jade setlocal ft=jade sw=2 ts=2
 
 """ PHP
 " Zend Coding Standard
