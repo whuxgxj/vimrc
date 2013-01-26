@@ -4,9 +4,9 @@
 " The author of this script is not responsible if you use it and lose data.
 " Search for the phrase 'EDIT ME' in this file to know what to edit.
 "
-" Plugins: Pathogen, SnipMate, VCSCommand, Surround, Matchit, 
-"          Ctrlp, NerdTree, Taglist, pydiction, python-mode, pythonfolding, phpfolding,
-"          DBext, ZenCoding Tabular, tComment, BufExplorer
+" Plugins: Pathogen, pydiction, SnipMate, VCSCommand, Surround, Matchit, 
+"          Ctrlp, NerdTree, Taglist, rails-vim, python-mode, pythonfolding, 
+"          DBext, phpfolding, ZenCoding, Tabular, tComment, BufExplorer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible " Prevent unexpected things your distro might make
 if has("unix")
@@ -167,15 +167,13 @@ let g:VCSCommandEnableBufferSetup = 1
 if has("gui_running")
     " Have different file types use different color schemes
     " make it so config files, etc use a certain color scheme
-    au BufNewFile,BufRead,BufEnter * color zenburn
+    au BufNewFile,BufRead,BufEnter * color grb256
     " make it so txt file uses a certain color scheme
     au BufNewFile,BufRead,BufEnter *.txt color zenburn
-    " make it so most code files use a certain color scheme
-    au BufNewFile,BufRead,BufEnter *.php,*.html,*.c,*.py,*.java,*.js,*.css,*.pl,*.sh color zenburn
 else
     " ir_black is the only color scheme I use that works right in the console
     "au BufNewFile,BufRead,BufEnter * color ir_black
-    au BufNewFile,BufRead,BufEnter * color zenburn
+    au BufNewFile,BufRead,BufEnter * color grb256
 endif
 "
 " Have zenburn colorscheme work better in bright environments
