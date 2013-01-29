@@ -190,6 +190,8 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
 endif
 
+""" Ruby
+au BufNew,BufRead,BufEnter *.rb set textwidth=79 fo=t sw=2 ts=2
 
 """ Python
 au BufNew,BufRead,BufEnter *.py set textwidth=79 fo=t sw=4 ts=4
