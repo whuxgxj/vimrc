@@ -192,6 +192,7 @@ endif
 
 """ Ruby
 au BufNew,BufRead,BufEnter *.rb set textwidth=79 fo=t sw=2 ts=2
+autocmd FileType ruby map <Leader>l :w<CR>:!ruby -c %<CR>
 
 """ Python
 au BufNew,BufRead,BufEnter *.py set textwidth=79 fo=t sw=4 ts=4
@@ -257,7 +258,7 @@ imap vd var_dump();<Esc>hi
 nmap <Leader>vf yssfvar_dump<Esc>f;xa;<Esc>
 " My snipmate snippets files have more stuff
 " Make it so you can run the current script through the php linter to check for syntax errors
-map <Leader>l :w !php -l<CR>
+autocmd FileType php map <Leader>l :w<CR>:!php -l %<CR>
 " Make it so in visual mode  you can do a multiline /* */. (Use the gcc " plugin for everything else)
 vnoremap <Leader>c <Esc>'<lt>O/*<ESC>'>o*/<ESC>
 " Make it so in visual mode you can do a multiline html comment <!-- -->
