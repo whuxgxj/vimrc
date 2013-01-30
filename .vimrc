@@ -332,11 +332,15 @@ if has("win32")
     winpos 0 0
 endif
 "
-if has('x11') && has('gui')
+if has('unix') && has('gui')
     " Set the font in Linux/Gvim to Droid Sans Mono. I use desktop=14, laptop=11, netbook=9
     " columns should be no longer than 139 chars. To quickly change just your fontsize in vim,
     " type: "gfn=<tab>" which will fill in the current font so you can just change the size
-    set gfn=Droid\ Sans\ Mono\ 11
+    if system('uname')=~'Darwin'
+      set gfn=Monaco:h16
+    elseif has('x11')
+      set gfn=Droid\ Sans\ Mono\ 11
+    endif 
 endif
 
 
