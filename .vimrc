@@ -4,10 +4,31 @@
 " The author of this script is not responsible if you use it and lose data.
 " Search for the phrase 'EDIT ME' in this file to know what to edit.
 "
-" Plugins: Pathogen, pydiction, SnipMate, VCSCommand, Surround, Matchit, 
-"          Ctrlp, NerdTree, Taglist, rails-vim, python-mode, pythonfolding, 
-"          DBext, phpfolding, ZenCoding, Tabular, tComment, BufExplorer
+" Plugins:
+"     With Pathogen installed first, install bundles:
+"       cd ~/.vim/bundle/
+"       git clone git://github.com/tpope/vim-rails.git
+"       git clone git://github.com/tpope/vim-surround.git
+"       git clone https://github.com/scrooloose/nerdtree.git
+"       git clone https://github.com/kien/ctrlp.vim.git
+"       git clone git://github.com/garbas/vim-snipmate.git
+"           git clone https://github.com/tomtom/tlib_vim.git
+"           git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
+"           git clone https://github.com/honza/snipmate-snippets.git
+"       git clone https://github.com/vim-scripts/ZenCoding.vim.git
+"       git clone https://github.com/vim-scripts/vcscommand.vim.git
+"       git clone https://github.com/vim-scripts/dbext.vim.git
+"       git clone https://github.com/tsaleh/vim-matchit.git
+"       git clone https://github.com/vim-scripts/taglist.vim.git
+"       git clone git://github.com/godlygeek/tabular.git
+"       git clone https://github.com/vim-scripts/tComment.git
+"       git clone git://github.com/klen/python-mode.git
+" Update:
+"     To periodically update all my pathogen bundles, do:
+"         cd ~/.vim/bundle; for i in $(ls); do cd "$i"; git pull --verbose; cd .. ; done
+"     I like to make this a script called: ~/bin/vimup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call pathogen#infect() " Put first to insure pathogen will work
 set nocompatible " Prevent unexpected things your distro might make
 if has("unix")
     set ttymouse=xterm2 " Make mouse work right in putty/gnu screen
@@ -94,9 +115,6 @@ nnoremap <Leader>( 0%ci(
 """ Abbreviations
 iab teh the
 
-""" Pathogen
-call pathogen#infect()
-
 
 """ Indentation
 set ts=4 " Make tabs 4 spaces
@@ -161,7 +179,7 @@ let g:VCSCommandEnableBufferSetup = 1
 
 
 """ Color Schemes
-" EDIT ME (Create ~/.vim/colors/ and put ir_black.vim)
+" EDIT ME (Create ~/.vim/colors/ and put ir_black.vim, zenburn.vim and grb256.vim)
 " EDIT ME - To see syntax colors properly:
 "               In ~/.screenrc put: term xterm-256color
 if has("gui_running")
@@ -218,7 +236,11 @@ filetype plugin on
 if has("win32")
     let g:pydiction_location = 'C:/vim/vimfiles/ftplugin/pydiction/complete-dict'
 else
-    let g:pydiction_location = '/home/rkulla/.vim/after/ftplugin/complete-dict'
+    if system('uname')=~'Darwin'
+        let g:pydiction_location = '/Users/rkulla/.vim/bundle/pydiction/complete-dict'
+    else
+        let g:pydiction_location = '/home/rkulla/.vim/bundle/pydiction/complete-dict'
+    endif
 endif
 
 
@@ -259,7 +281,7 @@ nmap <Leader>vf yssfvar_dump<Esc>f;xa;<Esc>
 " My snipmate snippets files have more stuff
 " Make it so you can run the current script through the php linter to check for syntax errors
 autocmd FileType php map <Leader>l :w<CR>:!php -l %<CR>
-" Make it so in visual mode  you can do a multiline /* */. (Use the gcc " plugin for everything else)
+" Make it so in visual mode  you can do a multiline /* */. (Use the gcc plugin for everything else)
 vnoremap <Leader>c <Esc>'<lt>O/*<ESC>'>o*/<ESC>
 " Make it so in visual mode you can do a multiline html comment <!-- -->
 vnoremap <Leader>! <Esc>'<lt>O<!--<ESC>'>o--><ESC>
@@ -297,7 +319,13 @@ let g:netrw_sort_options="i"
 """ Taglist
 ""EDIT ME
 if has("unix")
-    let Tlist_Ctags_Cmd = 'ctags'
+    if system('uname')=~'Darwin'
+      " make sure to 'brew install ctags' first because the /usr/bin/ctags
+      " that ships with OSX is not the right one
+      let Tlist_Ctags_Cmd = '/usr/local/Cellar/ctags/5.8/bin/ctags'
+    else 
+      let Tlist_Ctags_Cmd = 'ctags'
+    endif
 else
     let Tlist_Ctags_Cmd = '~/pf/opt/ctags/ctags.exe'
 endif
@@ -340,7 +368,7 @@ if has('unix') && has('gui')
       set gfn=Monaco:h16
     elseif has('x11')
       set gfn=Droid\ Sans\ Mono\ 11
-    endif 
+    endif
 endif
 
 
