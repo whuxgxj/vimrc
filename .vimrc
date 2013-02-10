@@ -5,30 +5,10 @@
 " Search for the phrase 'EDIT ME' in this file to know what to edit.
 "
 " Plugins:
-"     With Pathogen installed first, install bundles:
-"       cd ~/.vim/bundle/
-"       git clone git://github.com/tpope/vim-rails.git
-"       git clone git://github.com/tpope/vim-surround.git
-"       git clone https://github.com/scrooloose/nerdtree.git
-"       git clone https://github.com/kien/ctrlp.vim.git
-"       git clone git://github.com/garbas/vim-snipmate.git
-"           git clone https://github.com/tomtom/tlib_vim.git
-"           git clone https://github.com/MarcWeber/vim-addon-mw-utils.git
-"           git clone https://github.com/honza/snipmate-snippets.git
-"       git clone https://github.com/vim-scripts/ZenCoding.vim.git
-"       git clone https://github.com/vim-scripts/vcscommand.vim.git
-"       git clone https://github.com/vim-scripts/dbext.vim.git
-"       git clone https://github.com/tsaleh/vim-matchit.git
-"       git clone https://github.com/vim-scripts/taglist.vim.git
-"       git clone git://github.com/godlygeek/tabular.git
-"       git clone https://github.com/vim-scripts/tComment.git
-"       git clone git://github.com/klen/python-mode.git
-" Update:
-"     To periodically update all my pathogen bundles, do:
-"         cd ~/.vim/bundle; for i in $(ls); do cd "$i"; git pull --verbose; cd .. ; done
-"     I like to make this a script called: ~/bin/vimup
+"   Install all my plugins via my vimogen project:
+"       https://github.com/rkulla/vimogen
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call pathogen#infect() " Put first to insure pathogen will work
+execute pathogen#infect() " Put first to insure pathogen will work
 set nocompatible " Prevent unexpected things your distro might make
 if has("unix")
     set ttymouse=xterm2 " Make mouse work right in putty/gnu screen
