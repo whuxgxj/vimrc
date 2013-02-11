@@ -8,7 +8,8 @@
 "   Install all my plugins via my vimogen project:
 "       https://github.com/rkulla/vimogen
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-execute pathogen#infect() " Put first to insure pathogen will work
+" Put first to insure pathogen will work
+execute pathogen#infect() 
 set nocompatible " Prevent unexpected things your distro might make
 if has("unix")
     set ttymouse=xterm2 " Make mouse work right in putty/gnu screen
@@ -159,7 +160,7 @@ let g:VCSCommandEnableBufferSetup = 1
 
 
 """ Color Schemes
-" EDIT ME (Create ~/.vim/colors/ and put ir_black.vim, zenburn.vim and grb256.vim)
+" EDIT ME (Create ~/.vim/colors/ and add ir_black, molokai, zenburn and grb256)
 " EDIT ME - To see syntax colors properly:
 "               In ~/.screenrc put: term xterm-256color
 if has("gui_running")
@@ -171,7 +172,7 @@ if has("gui_running")
 else
     " ir_black is the only color scheme I use that works right in the console
     "au BufNewFile,BufRead,BufEnter * color ir_black
-    au BufNewFile,BufRead,BufEnter * color grb256
+    au BufNewFile,BufRead,BufEnter * color molokai
 endif
 "
 " Have zenburn colorscheme work better in bright environments
