@@ -526,6 +526,12 @@ endif
 " Make it so searches don't open folds automatically
 set foldopen-=search
 
+" Make it so you can just type :Beg foo  to search for the string foo occuring
+" within the first 20 characters of a row:
+function! BegSearch(strtofind)
+  call search(a:strtofind.'\%<20c')
+endfunction
+command! -nargs=1 Beg call BegSearch(<f-args>)
 
 """ DBext 
 " Kata profiles
