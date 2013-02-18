@@ -189,6 +189,10 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
 endif
 
+""" Ctrlp
+" Remap invoker to Leader-x
+let g:ctrlp_map = '<Leader>x'
+
 """ Ruby
 au BufNew,BufRead,BufEnter *.rb set textwidth=79 fo=t sw=2 ts=2
 autocmd FileType ruby map <Leader>l :w<CR>:!ruby -c %<CR>
