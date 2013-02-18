@@ -1,3 +1,4 @@
+git://github.com/vim-ruby/vim-ruby.git
 git://github.com/tpope/vim-rails.git
 git://github.com/tpope/vim-surround.git
 git://github.com/tpope/vim-repeat
