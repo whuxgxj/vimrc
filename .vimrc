@@ -527,6 +527,13 @@ if has("autocmd")
     augroup END
 endif
 "
+" Make it so you can toggle # comments as folds (useful for config files and ruby/python/bash especially)
+function HideComments()
+  set fdm=expr
+  set fde=getline(v:lnum)=~'^\\s*#'?1:getline(prevnonblank(v:lnum))=~'^\\s*#'?1:getline(nextnonblank(v:lnum))=~'^\\s*#'?1:0
+endfunction
+map <Leader>h :call HideComments()<CR>
+"
 " Make it so searches don't open folds automatically
 set foldopen-=search
 
