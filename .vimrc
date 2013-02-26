@@ -33,7 +33,7 @@ set fo=t " I don't want the format options that auto create comments
 set showcmd " Show partial commands in the last line of the screen, eg if you type 'f' it will show 'f' until you finish the command.
 set enc=utf-8 " Settings this to utf-8 causes fencs to default to ucs-bom,utf-8,default,latin1
 autocmd GuiEnter * set cul " Highlight entire line wherever cursor is. Slow over SSH so enable it in gvim by default only
-set pastetoggle=<F11> " Use <F11> to toggle between 'paste' and 'nopaste'. Use if vim isn't connected to an X Server such as if using gvim32 or if you forgot to ssh -Y or -X.
+set pastetoggle=<F3> " Use <F3> to toggle between 'paste' and 'nopaste'. Use if vim isn't connected to an X Server such as if using gvim32 or if you forgot to ssh -Y or -X.
 set clipboard=unnamed " Tends to let you copy/paste to/from vim better
 command! -nargs=1 -complete=dir Rename saveas <args> | call delete(expand("#")) " Rename the current file by typing :Rename <new_filename>
 "
@@ -324,14 +324,6 @@ nnoremap <C-S-T> :TlistToggle<CR>
 "cscope add cscope.out . -C
 " have CTRL-] and :tag search through cscope first, then tags
 "set cscopetag
-
-
-""" BufExplorer
-" Don't show the default help in BufExplorer
-let g:bufExplorerDefaultHelp=0
-" Make it so you can start BufExplorer with F3 instead of the default \be
-" you can also toggle it off by pressing F3 again instead of having to 'q'
-nnoremap <expr> <F3> bufname("%") == '[BufExplorer]' ? "\<C-^>" : ":BufExplorer\<CR>"
 
 
 """ Fonts
