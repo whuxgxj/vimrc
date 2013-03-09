@@ -35,6 +35,9 @@ set enc=utf-8 " Settings this to utf-8 causes fencs to default to ucs-bom,utf-8,
 autocmd GuiEnter * set cul " Highlight entire line wherever cursor is. Slow over SSH so enable it in gvim by default only
 set pastetoggle=<F3> " Use <F3> to toggle between 'paste' and 'nopaste'. Use if vim isn't connected to an X Server such as if using gvim32 or if you forgot to ssh -Y or -X.
 set clipboard=unnamed " Tends to let you copy/paste to/from vim better
+if $TMUX == '' " http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
+  set clipboard+=unnamed
+endif
 command! -nargs=1 -complete=dir Rename saveas <args> | call delete(expand("#")) " Rename the current file by typing :Rename <new_filename>
 "
 let mapleader = "," " remap <Leader> to comma so you can do: ,s instead of \s, etc.
