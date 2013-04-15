@@ -34,7 +34,6 @@ set showcmd " Show partial commands in the last line of the screen, eg if you ty
 set enc=utf-8 " Settings this to utf-8 causes fencs to default to ucs-bom,utf-8,default,latin1
 autocmd GuiEnter * set cul " Highlight entire line wherever cursor is. Slow over SSH so enable it in gvim by default only
 set pastetoggle=<F3> " Use <F3> to toggle between 'paste' and 'nopaste'. Use if vim isn't connected to an X Server such as if using gvim32 or if you forgot to ssh -Y or -X.
-set clipboard=unnamed " Tends to let you copy/paste to/from vim better
 if $TMUX == '' " http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
   set clipboard+=unnamed
 endif
@@ -426,59 +425,6 @@ function! InsertCloseTag()
 "    echohl None
 "  endif " check on filetype
 endfunction " InsertCloseTag()
-"
-" Make it so pressing F8 and F9 to scroll through the history of html tags
-nnoremap \hp :call RepeatTag(0)<CR>
-imap <F8> <Space><BS><Esc>\hpa
-nnoremap \hn :call RepeatTag(1)<CR>
-imap <F9> <Space><BS><Esc>\hna
-function! RepeatTag(Forward)
-    " repeats a (non-closing) HTML tag from elsewhere in the document; call
-    " repeatedly until the correct tag is inserted (like with insert mode <Ctrl>+P
-    " and <Ctrl>+N completion), with Forward determining whether to copy forwards
-    " or backwards through the file; used for the \hp and \hn operations defined
-    " above;
-    " requires preservation of marks i and j;
-    " clobbers register z
-    " by Smylers  http://www.stripey.com/vim/
-    " 2000 Apr 30
-    if &filetype == 'html' || &filetype == 'php'
-        " if the cursor is where this function left it, then continue from there:
-        if line('.') == line("'i") && col('.') == col("'i")
-            " delete the tag inserted last time:
-            if col('.') == strlen(getline('.'))
-                normal dF<x
-            else
-                normal dF<x
-                if col('.') != 1
-                    normal h
-                endif
-            endif
-            " note the cursor position, then jump to where the deleted tag was found:
-            normal mi`j
-
-            " otherwise, just store the cursor position (in mark i):
-        else
-            normal mi
-        endif
-        if a:Forward
-            let SearchCmd = '/'
-        else
-            let SearchCmd = '?'
-        endif
-        " find the next non-closing tag (in the appropriate direction), note where
-        " it is (in mark j) in case this function gets called again, then yank it
-        " and paste a copy at the original cursor position, and store the final
-        " cursor position (in mark i) for use next time round:
-        execute "normal " . SearchCmd . "<[^/>].\\{-}>\<CR>mj\"zyf>`i\"zpmi"
-    else " filetype is not HTML
-        echohl ErrorMsg
-        echo 'The RepeatTag() function is only intended to be used in HTML files.'
-        sleep
-        echohl None
-
-    endif
-endfunction " RepeatTag()
 
 
 """ Split windows
