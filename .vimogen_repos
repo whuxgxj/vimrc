@@ -20,3 +20,5 @@ git://github.com/digitaltoad/vim-jade
 git://github.com/klen/python-mode.git
 git://github.com/rkulla/pydiction.git
 git://github.com/tomasr/molokai.git
+git://github.com/cstrahan/grb256.git
+git://github.com/scrooloose/syntastic.git
