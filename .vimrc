@@ -218,6 +218,8 @@ let g:pep8_map='<C-F5>'
 "
 " Pydiction
 filetype plugin on
+" Map omnicomplete keys <C-X><C-O to simply <Leader>o
+imap <Leader>o <C-X><C-O>
 "let g:pydiction_menu_height = 10
 " EDIT ME
 if has("win32")

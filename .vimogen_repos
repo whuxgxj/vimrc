@@ -1,5 +1,5 @@
-git://github.com/klen/python-mode.git
 git://github.com/rkulla/pydiction.git
+git://github.com/klen/python-mode.git
 git://github.com/vim-ruby/vim-ruby.git
 git://github.com/tpope/vim-rails.git
 git://github.com/digitaltoad/vim-jade
