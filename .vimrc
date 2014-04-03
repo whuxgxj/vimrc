@@ -41,7 +41,7 @@ command! -nargs=1 -complete=dir Rename saveas <args> | call delete(expand("#")) 
 "
 let mapleader = "," " remap <Leader> to comma so you can do: ,s instead of \s, etc.
 " Undo a line at a time no matter what
-inoremap <CR> <C-g>u<CR>
+"inoremap <CR> <C-g>u<CR>
 " Make it so you can select some text and sort it in place
 vnoremap <Leader>s :sort<CR> 
 " Map ^l to to clear all highlighted text on the screen (like from /searches)
@@ -217,6 +217,9 @@ map <Leader>b 0import ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 let g:pep8_map='<C-F5>'
 "
 " Pydiction
+" Remap snipmate's trigger key from tab to <C-J>
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger
 filetype plugin on
 " Map omnicomplete keys <C-X><C-O to simply <Leader>o
 imap <Leader>o <C-X><C-O>
