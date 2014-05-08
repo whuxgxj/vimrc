@@ -6,12 +6,10 @@ git://github.com/digitaltoad/vim-jade
 git://github.com/scrooloose/syntastic.git
 git://github.com/scrooloose/nerdtree.git
 git://github.com/kien/ctrlp.vim.git
-git://github.com/garbas/vim-snipmate.git
 git://github.com/vim-scripts/ZenCoding.vim.git
 git://github.com/tpope/vim-surround.git
 git://github.com/tpope/vim-repeat
-git://github.com/tomtom/tlib_vim.git
-git://github.com/MarcWeber/vim-addon-mw-utils.git
+git://github.com/sirver/ultisnips
 git://github.com/honza/vim-snippets.git
 git://github.com/tpope/vim-git.git
 git://github.com/vim-scripts/vcscommand.vim.git
