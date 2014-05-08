@@ -27,6 +27,7 @@ set ignorecase " Allow case-insensitive /searching
 set spelllang=en_us
 set nobackup " I'm hardcore. I don't like it triggering my file system watchers
 set relativenumber " show relative linenumbers to take guess work out of jumping around
+let g:UltiSnipsJumpForwardTrigger = "<Tab>" " use tab to get to next placeholders
 set nowritebackup " I'll take my chances.
 set nostartofline " So cursor doesn't jump to beginning of line when you G, GG, ^F, etc
 set confirm " When you :q, :bd, etc a file that's been changed, popup a 'save file?' confirm box instead of showing errors
