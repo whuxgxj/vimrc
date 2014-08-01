@@ -26,10 +26,10 @@ set hidden " Allow you to change buffers without having to save modified ones fi
 set ignorecase " Allow case-insensitive /searching
 set spelllang=en_us
 set nobackup " I'm hardcore. I don't like it triggering my file system watchers
-set relativenumber " show relative linenumbers to take guess work out of jumping around
-let g:UltiSnipsJumpForwardTrigger = "<Tab>" " use tab to get to next placeholders
 set nowritebackup " I'll take my chances.
 set nostartofline " So cursor doesn't jump to beginning of line when you G, GG, ^F, etc
+"set relativenumber " show relative linenumbers to take guess work out of jumping around
+let g:UltiSnipsJumpForwardTrigger = "<Tab>" " use tab to get to next placeholders
 set confirm " When you :q, :bd, etc a file that's been changed, popup a 'save file?' confirm box instead of showing errors
 set fo=t " I don't want the format options that auto create comments 
 set showcmd " Show partial commands in the last line of the screen, eg if you type 'f' it will show 'f' until you finish the command.
@@ -56,6 +56,8 @@ map <Leader>e :e **/*
 map Q gq
 " Make it so ctrl+up arrow scrolls upward through text from the current cursor position without moving the cursor upward too
 nmap <C-up> 1<C-u>
+" Highlight words under cursor but keep the cursor where it is
+noremap * *``
 " Make it so ctrl+down arrow scrolls downward through text from the current cursor position without moving the cursor downward too
 nmap <C-down> 1<C-d>
 " Make it so you can hit F10 to automatically scrollbind all the windows so the windows scroll in sync with eachother
@@ -170,7 +172,7 @@ let g:VCSCommandEnableBufferSetup = 1
 if has("gui_running")
     " Have different file types use different color schemes
     " make it so config files, etc use a certain color scheme
-    au BufNewFile,BufRead,BufEnter * color grb256
+    "au BufNewFile,BufRead,BufEnter * color grb256
     " make it so txt file uses a certain color scheme
     au BufNewFile,BufRead,BufEnter *.txt color zenburn
 else
@@ -219,12 +221,7 @@ map <Leader>b 0import ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 let g:pep8_map='<C-F5>'
 "
 " Pydiction
-" Remap snipmate's trigger key from tab to <C-J>
-imap <C-J> <Plug>snipMateNextOrTrigger
-smap <C-J> <Plug>snipMateNextOrTrigger
 filetype plugin on
-" Map omnicomplete keys <C-X><C-O to simply <Leader>o
-imap <Leader>o <C-X><C-O>
 "let g:pydiction_menu_height = 10
 " EDIT ME
 if has("win32")
@@ -236,7 +233,26 @@ else
         let g:pydiction_location = '/home/rkulla/.vim/bundle/pydiction/complete-dict'
     endif
 endif
+"
+" Find the definition of the word under the cursor in same file types (really
+" only works for Python at the moment.) Requires you don't set grepprg to Ack
+" or 3rd party. Customized for about.me's codebase.
+map <Leader>py :execute "silent grep! -srnwIE --exclude-dir=.git " .
+        \ "--exclude-dir=test --exclude-dir=tpm --include=*" . expand("%:e") .
+        \ " -e 'def " . expand("<cword>") . "' -e 'class " . expand("<cword>") .
+        \ "' ." <Bar> cwindow<CR>
 
+" Highlight lines over 80 characters
+function! LongLines()
+    if exists('+colorcolumn')
+        setlocal colorcolumn=80
+    else
+        " au BufWinEnter * let w:m2=matchadd('LongLine', '\%>80v.\+', -1)
+        au BufEnter,BufWinEnter,StdinReadPost *.py,*.sh match LongLine /\%>80v.\+/
+    endif
+endfunction
+" Only highlight long lines in Python, for now
+au BufEnter,BufWinEnter *.py call LongLines()
 
 """ CoffeeScript
 " Make it so you can recompile CoffeeScript Koans easily
@@ -300,7 +316,7 @@ endif
 
 """ Grep
 " Use ack-grep for :grep in vim, eg ':grep -i --php foo' 
-set grepprg=ack-grep
+" set grepprg=ack-grep
 
 
 """ :Sex 
