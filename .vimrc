@@ -237,10 +237,19 @@ endif
 " Find the definition of the word under the cursor in same file types (really
 " only works for Python at the moment.) Requires you don't set grepprg to Ack
 " or 3rd party. Customized for about.me's codebase.
-map <Leader>py :execute "silent grep! -srnwIE --exclude-dir=.git " .
-        \ "--exclude-dir=test --exclude-dir=tpm --include=*" . expand("%:e") .
-        \ " -e 'def " . expand("<cword>") . "' -e 'class " . expand("<cword>") .
-        \ "' ." <Bar> cwindow<CR>
+" map <Leader>py :execute "silent grep! -srnwIE --exclude-dir=.git " .
+"         \ "--exclude-dir=test --exclude-dir=tpm --include=*" . expand("%:e") .
+"         \ " -e 'def " . expand("<cword>") . "' -e 'class " . expand("<cword>") .
+"         \ "' ." <Bar> cwindow<CR>
+
+" If in a git directory, type ":grep -i whatever"
+" Jump to next match with ":cn"
+" Use ":grep!" to avoid opening files.
+" Search just javascript files: :grep -i foo -- \*.js
+" Search just js and python files: :grep -i foo -- \*.js \*.py
+if isdirectory(".git")
+    set grepprg=git\ grep\ --line-number
+endif
 
 " Highlight lines over 80 characters
 function! LongLines()
