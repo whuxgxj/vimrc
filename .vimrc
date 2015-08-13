@@ -242,11 +242,12 @@ endif
 "         \ " -e 'def " . expand("<cword>") . "' -e 'class " . expand("<cword>") .
 "         \ "' ." <Bar> cwindow<CR>
 
-" If in a git directory, type ":grep -i whatever"
-" Jump to next match with ":cn"
-" Use ":grep!" to avoid opening files.
-" Search just javascript files: :grep -i foo -- \*.js
-" Search just js and python files: :grep -i foo -- \*.js \*.py
+" If in a git directory just type  :grep -i 'whatever'
+" Jump to next match with :cn
+" Use :grep! to avoid opening files.
+" Search just javascript files :grep -i 'foo' -- \*.js
+" Search just js and python files :grep -i 'foo' -- \*.js \*.py
+" Your search string should be in quotes for regex to work.
 if isdirectory(".git")
     set grepprg=git\ grep\ --line-number
 endif
