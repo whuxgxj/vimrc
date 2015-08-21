@@ -199,6 +199,9 @@ endif
 " Remap invoker to Leader-x
 let g:ctrlp_map = '<Leader>x'
 
+" Ignore these file extensions
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
+
 """ Ruby
 au BufNew,BufRead,BufEnter *.rb set textwidth=79 fo=t sw=2 ts=2
 autocmd FileType ruby map <Leader>l :w<CR>:!ruby -c %<CR>
