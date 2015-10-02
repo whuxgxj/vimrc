@@ -206,6 +206,10 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 au BufNew,BufRead,BufEnter *.rb set textwidth=79 fo=t sw=2 ts=2
 autocmd FileType ruby map <Leader>l :w<CR>:!ruby -c %<CR>
 
+""" Golang 
+" Highlight methods like fmt.Println in vim-go
+let g:go_highlight_methods = 1
+
 """ Python
 au BufNew,BufRead,BufEnter *.py set textwidth=79 fo=t sw=4 ts=4
 " 
