@@ -170,15 +170,15 @@ let g:VCSCommandEnableBufferSetup = 1
 " EDIT ME - To see syntax colors properly:
 "               In ~/.screenrc put: term xterm-256color
 if has("gui_running")
+    set background=light
     " Have different file types use different color schemes
     " make it so config files, etc use a certain color scheme
-    "au BufNewFile,BufRead,BufEnter * color grb256
+    au BufNewFile,BufRead,BufEnter * color solarized
     " make it so txt file uses a certain color scheme
-    au BufNewFile,BufRead,BufEnter *.txt color zenburn
+    au BufNewFile,BufRead,BufEnter *.txt color mayansmoke
 else
     " ir_black is the only color scheme I use that works right in the console
-    "au BufNewFile,BufRead,BufEnter * color ir_black
-    au BufNewFile,BufRead,BufEnter * color molokai
+    au BufNewFile,BufRead,BufEnter * color mayansmoke-rkulla
 endif
 "
 " Have zenburn colorscheme work better in bright environments
