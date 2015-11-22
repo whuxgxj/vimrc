@@ -1,5 +1,6 @@
 https://github.com/rkulla/pydiction.git
 https://github.com/klen/python-mode.git
+https://github.com/fatih/vim-go.git
 https://github.com/vim-ruby/vim-ruby.git
 https://github.com/tpope/vim-rails.git
 https://github.com/tpope/vim-bundler.git
@@ -8,7 +9,6 @@ https://github.com/scrooloose/syntastic.git
 https://github.com/scrooloose/nerdtree.git
 https://github.com/kien/ctrlp.vim.git
 https://github.com/vim-scripts/ZenCoding.vim.git
-https://github.com/altercation/vim-colors-solarized.git
 https://github.com/tpope/vim-surround.git
 https://github.com/tpope/vim-repeat
 https://github.com/sirver/ultisnips
@@ -22,3 +22,8 @@ https://github.com/vim-scripts/tComment.git
 https://github.com/tomasr/molokai.git
 https://github.com/tpope/vim-pathogen.git
 https://github.com/rkulla/vimogen.git
+https://github.com/vim-scripts/mayansmoke.git
+https://github.com/quanganhdo/grb256.git
+https://github.com/romainl/Apprentice.git
+https://github.com/jnurmine/Zenburn.git
+https://github.com/altercation/vim-colors-solarized.git
