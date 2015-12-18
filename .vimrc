@@ -352,23 +352,27 @@ let g:netrw_winsize=35
 " Sort case-insensitively (so Program Files appears next to pf, etc)
 let g:netrw_sort_options="i"
 
+""" TagBar (https://majutsushi.github.io/tagbar/)
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+
 
 """ Taglist
 ""EDIT ME
-if has("unix")
-    if system('uname')=~'Darwin'
-      " make sure to 'brew install ctags' first because the /usr/bin/ctags
-      " that ships with OSX is not the right one
-      let Tlist_Ctags_Cmd = '/usr/local/Cellar/ctags/5.8/bin/ctags'
-    else 
-      let Tlist_Ctags_Cmd = 'ctags'
-    endif
-else
-    let Tlist_Ctags_Cmd = '~/pf/opt/ctags/ctags.exe'
-endif
-"
-" make it so you can toggle taglist on/off with ctrl+shift+t
-nnoremap <C-S-T> :TlistToggle<CR>
+" if has("unix")
+"     if system('uname')=~'Darwin'
+"       " make sure to 'brew install ctags' first because the /usr/bin/ctags
+"       " that ships with OSX is not the right one
+"       let Tlist_Ctags_Cmd = '/usr/local/Cellar/ctags/5.8/bin/ctags'
+"     else 
+"       let Tlist_Ctags_Cmd = 'ctags'
+"     endif
+" else
+"     let Tlist_Ctags_Cmd = '~/pf/opt/ctags/ctags.exe'
+" endif
+" "
+" " make it so you can toggle taglist on/off with ctrl+shift+t
+" nnoremap <C-S-T> :TlistToggle<CR>
 
 
 """ CScope
