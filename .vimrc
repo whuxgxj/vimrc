@@ -531,6 +531,10 @@ map <Leader>h :call HideComments()<CR>
 "
 " Make it so searches don't open folds automatically
 set foldopen-=search
+" Make it so ,fs folds the current file based on its syntax
+nmap <Leader>fs :set foldmethod=syntax<CR>
+" Make it so ,fc folds the // style comments
+nmap <Leader>fc :set foldmethod=expr foldexpr=getline(v:lnum)=~'^\\s*//'<CR>
 
 " Make it so you can just type :Beg foo  to search for the string foo occuring
 " within the first 20 characters of a row:
