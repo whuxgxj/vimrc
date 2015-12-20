@@ -44,6 +44,8 @@ command! -nargs=1 -complete=dir Rename saveas <args> | call delete(expand("#")) 
 let mapleader = "," " remap <Leader> to comma so you can do: ,s instead of \s, etc.
 " Undo a line at a time no matter what
 "inoremap <CR> <C-g>u<CR>
+" Make it so you can run the omni-completion by typing ,tab
+imap <Leader><TAB> <C-X><C-O>
 " Make it so you can select some text and sort it in place
 vnoremap <Leader>s :sort<CR> 
 " Map ^l to to clear all highlighted text on the screen (like from /searches)
