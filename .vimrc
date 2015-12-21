@@ -491,12 +491,19 @@ if has("win32")
     nmap <C-S-Down> 300<C-w>+
     nmap <C-S-Left> 300<C-w><
     nmap <C-S-Right> 300<C-w>>
+else
+    " Make it so ,H resizes a split vertical window  to be larger. ,L for smaller
+    nmap <Leader>H 10<C-w>>
+    nmap <Leader>L 10<C-w><
 endif
 "
 " Let's you close the current file by typing :Clear w/o closing the split window and starts a new file
 com! Clear :enew <bar> bdel # 
 " Let's you close the current file by typing F2 w/o closing the split window then jumps to the next file
 nmap <F2> :bn <bar> bd #<CR>
+" Make it so HH moves to the window to the left and HH moves to the right
+nmap HH <C-w>h
+nmap LL <C-w>l
 
 
 """ Folds 
