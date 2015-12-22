@@ -35,6 +35,18 @@ set fo=t " I don't want the format options that auto create comments
 set showcmd " Show partial commands in the last line of the screen, eg if you type 'f' it will show 'f' until you finish the command.
 set enc=utf-8 " Settings this to utf-8 causes fencs to default to ucs-bom,utf-8,default,latin1
 autocmd GuiEnter * set cul " Highlight entire line wherever cursor is. Slow over SSH so enable it in gvim by default only
+"
+" Make it easier to see your cursor in console vim
+" tmux will only forward escape sequences to the terminal if surrounded by a DCS sequence
+" http://sourceforge.net/mailarchive/forum.php?thread_name=AANLkTinkbdoZ8eNR1X2UobLTeww1jFrvfJxTMfKSq-L%2B%40mail.gmail.com&forum_name=tmux-users
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+"
 set pastetoggle=<F3> " Use <F3> to toggle between 'paste' and 'nopaste'. Use if vim isn't connected to an X Server such as if using gvim32 or if you forgot to ssh -Y or -X.
 if $TMUX == '' " http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
   set clipboard+=unnamed
