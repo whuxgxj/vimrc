@@ -368,6 +368,8 @@ let g:netrw_sort_options="i"
 """ TagBar (https://majutsushi.github.io/tagbar/)
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+" Make it so ,wf shows the name of the function you're currently in
+nmap <Leader>wf :TagbarCurrentTag<CR>
 
 
 """ Taglist
