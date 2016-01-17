@@ -173,11 +173,6 @@ function! StatuslineMultiFileFlag()
 endfunction
 
 
-""" VCSCommand
-" Make it so %{VCSCommandGetStatusLine()} can be added to statusline
-let g:VCSCommandEnableBufferSetup = 1
-
-
 """ Color Schemes
 " EDIT ME (Create ~/.vim/colors/ and add ir_black, molokai, zenburn and grb256)
 " EDIT ME - To see syntax colors properly:
