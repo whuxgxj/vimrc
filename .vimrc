@@ -148,7 +148,7 @@ endif
 
 
 """ Statusbar
-set statusline=%{StatuslineMultiFileFlag()}\ %-3.3n\ %f\ %h%m%r%w[%{strlen(&ft)?&ft:'none'},%{strlen(&fenc)?&fenc:&enc},%{&fileformat}]\%{VCSCommandGetStatusLine()}\ %=%b,0x%-8B\ %-14.(%l,%c%V%)\ %<%P
+set statusline=%P\ %f\ [%{StatuslineMultiFileFlag()}%n\ %l,%c%V]\ %h%m%r%w[%{strlen(&ft)?&ft:'none'},%{strlen(&fenc)?&fenc:&enc},%{&fileformat}]\ %<\%{fugitive#statusline()}
 set laststatus=2
 " Function to add to 'set statusline', via %{StatuslineMultiFileFlag()} above, 
 " to see how many buffers are currently open without having to type ':ls'
@@ -162,9 +162,8 @@ function! StatuslineMultiFileFlag()
             endif
         endfor
 
-        " only show 'Open Files' message if there's more than one open file
         if num_files > 1
-            let g:statusline_multi_file_flag = '[Open Files: ' . num_files . ']'
+            let g:statusline_multi_file_flag = num_files . '/'
         else
             let g:statusline_multi_file_flag = ''
         endif
