@@ -148,7 +148,7 @@ endif
 
 
 """ Statusbar
-set statusline=%P\ %f\ [%{StatuslineMultiFileFlag()}%n\ %l,%c%V]\ %h%m%r%w[%{strlen(&ft)?&ft:'none'},%{strlen(&fenc)?&fenc:&enc},%{&fileformat}]\ %<\%{fugitive#statusline()}
+set statusline=%P\ %f\ [%n\%{StatuslineMultiFileFlag()} %l,%c%V]\ %h%m%r%w[%{strlen(&ft)?&ft:'none'},%{strlen(&fenc)?&fenc:&enc},%{&fileformat}]\ %<\%{fugitive#statusline()}
 set laststatus=2
 " Function to add to 'set statusline', via %{StatuslineMultiFileFlag()} above, 
 " to see how many buffers are currently open without having to type ':ls'
@@ -163,7 +163,7 @@ function! StatuslineMultiFileFlag()
         endfor
 
         if num_files > 1
-            let g:statusline_multi_file_flag = num_files . '/'
+            let g:statusline_multi_file_flag = '/' . num_files
         else
             let g:statusline_multi_file_flag = ''
         endif
