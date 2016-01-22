@@ -148,7 +148,7 @@ endif
 
 
 """ Statusbar
-set statusline=%P\ %f\ [%n\%{StatuslineMultiFileFlag()} %l,%c%V %b,0x%B]\ %h%m%r%w[%{strlen(&ft)?&ft:'none'},%{strlen(&fenc)?&fenc:&enc},%{&fileformat}]\ %<\%{fugitive#statusline()}
+set statusline=%P\ %f\ [%n\%{StatuslineMultiFileFlag()} %l,%c%V %b,0x%B\ %o]\ %h%m%r%w[%{strlen(&ft)?&ft:'none'},%{strlen(&fenc)?&fenc:&enc},%{&fileformat}]\ %<\%{fugitive#statusline()}
 set laststatus=2
 " Function to add to 'set statusline', via %{StatuslineMultiFileFlag()} above, 
 " to see how many buffers are currently open without having to type ':ls'
