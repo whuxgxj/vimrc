@@ -203,6 +203,13 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
 endif
 
+" Make it so you can identify color group names of item under cursor by pressing ,$
+nmap <silent> <Leader>$ :echo 'hi<' .
+        \ synIDattr(synID(line('.'), col('.'), 1), 'name') .
+        \ '> trans<' . synIDattr(synID(line('.'), col('.'), 0), 'name') .
+        \ '> lo<' . synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name') .
+        \ '>'<CR>
+
 """ Ctrlp
 " Remap invoker to Leader-x
 let g:ctrlp_map = '<Leader>x'
@@ -580,13 +587,6 @@ if has("win32")
     " Make it so you can yank current line up to the newline into Windows' clipboard
     nmap <Leader>y 0"+y$
     nmap <Leader>x :silent ! start <cfile><CR>
-"
-    " Make it so you can identify color group names of item under cursor by pressing alt+i
-    nmap <silent> <M-i> :echo 'hi<' . 
-          \ synIDattr(synID(line('.'), col('.'), 1), 'name') . 
-          \ '> trans<' . synIDattr(synID(line('.'), col('.'), 0), 'name') . 
-          \ '> lo<' . synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name') . 
-          \ '>'<CR> 
 "
     "map <F11> :set lines=50 columns=142<CR>
     " Simalt ~ involkes Windows Alt-space menu. :simalt ~x = Alt+space x
