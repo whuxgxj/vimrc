@@ -146,6 +146,9 @@ if has("autocmd")
   augroup END
 endif 
 
+" vim-qf plugin improves quickfix window
+" Make it so the plugins mappings work
+let g:qf_mapping_ack_style=1
 
 """ Statusbar
 set statusline=%P\ %f\ [%n\%{StatuslineMultiFileFlag()} %l,%c%V %b,0x%B\ %o]\ %h%m%r%w[%{strlen(&ft)?&ft:'none'},%{strlen(&fenc)?&fenc:&enc},%{&fileformat}]\ %<\%{fugitive#statusline()}
