@@ -17,6 +17,7 @@ https://github.com/sirver/ultisnips
 https://github.com/honza/vim-snippets.git
 https://github.com/tpope/vim-git.git
 https://github.com/tpope/vim-fugitive.git
+https://github.com/romainl/vim-qf.git
 https://github.com/vim-scripts/vcscommand.vim.git
 https://github.com/vim-scripts/dbext.vim.git
 https://github.com/vim-scripts/taglist.vim.git
