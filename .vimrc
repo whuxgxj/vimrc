@@ -604,3 +604,9 @@ if has("win32")
     " and ? in visual selection areas:
     vnoremap <M-/> <Esc>/\%V
 endif
+
+" Elm-lang
+" Auto-format code. Requires ElmCast/elm.vim and elm-oracle
+let g:elm_format_autosave=1
+" disable keybindings since they use <Leader> maps i already have
+let g:elm_setup_keybindings = 0
