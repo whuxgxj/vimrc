@@ -413,7 +413,7 @@ if has("win32")
     "set guifont=Terminal:h6:cOEM "change font
     "set guifont=Lucida_console:h10 "change font (the :h10 part is the size)
     "set guifont=Consolas:h12
-    set gfn=Droid\ Sans\ Mono:h11
+    "set gfn=Droid\ Sans\ Mono:h11
     winpos 0 0
 endif
 "
