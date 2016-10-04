@@ -241,6 +241,7 @@ au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>e <Plug>(go-rename)
+nnoremap <leader>a :cclose<CR>
 
 """ Python
 au BufNew,BufRead,BufEnter *.py set textwidth=79 fo=t sw=4 ts=4
