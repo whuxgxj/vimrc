@@ -224,7 +224,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 au BufNew,BufRead,BufEnter *.rb set textwidth=79 fo=t sw=2 ts=2
 autocmd FileType ruby map <Leader>l :w<CR>:!ruby -c %<CR>
 
-""" Golang 
+
+""" Golang stuff
 " have go files always show as 4 spaces each yet still be real tabs
 au BufRead,BufNewFile *.go set noet ts=4 sw=4
 " automatically add or remote import statements on save
@@ -232,10 +233,9 @@ let g:go_fmt_command = "goimports"
 " Highlight methods like fmt.Println in vim-go
 let g:go_highlight_methods = 1
 au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-nnoremap <leader>ct :GoCoverageToggle<CR>
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>cb :GoCoverageBrowser<CR>
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
@@ -243,6 +243,17 @@ au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 nnoremap <leader>a :cclose<CR>
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
 
 """ Python
 au BufNew,BufRead,BufEnter *.py set textwidth=79 fo=t sw=4 ts=4
